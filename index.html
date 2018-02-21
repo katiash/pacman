@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Pacman Demo</title>
+		<style type="text/css">
+		body{
+			background-color: black;
+
+		}
+		/* for all div elements withing the div of class "row" ... */
+			div.row div{
+				width: 20px;
+				height: 20px;
+				display: inline-block;
+			}
+			div.brick{
+				background-color: blue;
+			}
+			div.coin{
+				background: url('coin.gif');
+				background-repeat: no-repeat;
+				background-position: center;
+				background-size: 100%;
+			}
+			div.pacman{
+				background: url('pacman.gif');
+				background-repeat: no-repeat;
+				background-position: center;
+				background-size: 100%;	
+			}
+			div.empty{
+
+			}
+		</style>
+	</head>
+	<body>
+		<!--		 
+			 Game Requirements:
+
+			(Can use/import jQuery or another way...) 
+			List of Features:
+
+			1) js display the world (brick/empty/coin etc)
+			2) pacman to move up and down (and sideways)?
+		-->
+		
+		<div id='world'></div>
+		<div id='pacman' style=""></div>
+
+		<script>
+			var world = [
+				[ 2, 2, 2, 2, 2, 2, 2, 2, 2, 2],
+				[ 2, 0, 1, 2, 1, 1, 2, 2, 1, 2],
+				[ 2, 0, 0, 1, 1, 2, 0, 2, 1, 2],
+				[ 2, 1, 0, 2, 0, 0, 1, 0, 0, 2],
+				[ 2, 1, 2, 2, 2, 0, 1, 0, 2, 2],
+				[ 2, 1, 1, 2, 0, 1, 0, 2, 1, 2],
+				[ 2, 2, 1, 0, 1, 1, 1, 2, 0, 2],
+				[ 2, 1, 0, 2, 2, 2, 0, 0, 0, 2],
+				[ 2, 1, 1, 2, 2, 2, 1, 2, 1, 2],
+				[ 2, 1, 1, 0, 0, 0, 1, 2, 1, 2],
+				[ 2, 2, 2, 2, 2, 2, 2, 2, 2, 2],
+
+			] // world[x[y]]
+
+			function pacmanWorld() 
+			{
+				var output ='';
+
+				for (var x=0; x<world.length; x++){
+					output += "<div class = 'row'>\n\t";
+					console.log(world[x]);
+					for (var y=0; y<world[x].length; y++){
+						console.log(world[x][y]);
+					// 	if(world[x][y]==2)
+					// 	{
+					// 		output +='<div class="brick"></div>\n\t';
+					// 	}
+					// 	else if(world[x][y] ==1)
+					// 	{
+					// 		output +='<div class="coin"></div>\n\t';
+					// 	}
+					// 	else if(world[x][y]==0)
+					// 	{
+					// 		output +='<div class="empty"></div>\n\t';
+					// 	}
+					// }
+
+						switch (world[x][y]) {
+							case 2:
+								console.log(world[x][y]);
+								output +="<div class='brick'></div>\n\t";
+								break;
+							case 1:
+								output +='<div class="coin"></div>\n\t';
+								break;
+							case 0:
+								output +='<div class="empty"></div>\n\t';
+								break;
+						}
+					}
+					output += "</div>\n\t";
+				}
+				console.log(output);
+				document.getElementById("world").innerHTML=output;
+			}
+
+			pacmanWorld();
+			document.onkeydown =function(e){
+				//alert("User pressed key down");
+				console.log(e.key, e.keyCode);
+
+			};
+
+		</script>
+
+	</body>
+</html>
+
+<!-- ++++++++++++++++++++++++++ -->
+	<!-- 
+
+	<div class ='row'> 
+		<div class = 'brick'></div>
+		<div class = 'brick'></div>
+		<div class = 'brick'></div>	
+		<div class = 'brick'></div>
+		<div class = 'brick'></div>
+		<div class = 'brick'></div>
+		<div class = 'brick'></div>
+		<div class = 'brick'></div>
+		<div class = 'brick'></div>
+		<div class = 'brick'></div>
+	</div>
+	<div class ='row'> 
+		<div class = 'brick'></div>
+		<div class = 'coin'></div>
+		<div class = 'empty'></div>	
+		<div class = 'coin'></div>
+		<div class = 'pacman'></div>
+		<div class = 'coin'></div>
+		<div class = 'coin'></div>
+		<div class = 'brick'></div>
+		<div class = 'coin'></div>
+		<div class = 'brick'></div>
+	</div>
+
+	<div class ='row'> 
+		<div class = 'brick'></div>
+		<div class = 'coin'></div>
+		<div class = 'coin'></div>	
+		<div class = 'coin'></div>
+		<div class = 'empty'></div>
+		<div class = 'brick'></div>
+		<div class = 'coin'></div>
+		<div class = 'empty'></div>
+		<div class = 'coin'></div>
+		<div class = 'brick'></div>
+	</div>
+	
+	<div class ='row'> 
+		<div class = 'brick'></div>
+		<div class = 'coin'></div>
+		<div class = 'coin'></div>	
+		<div class = 'brick'></div>
+		<div class = 'brick'></div>
+		<div class = 'coin'></div>
+		<div class = 'brick'></div>
+		<div class = 'coin'></div>
+		<div class = 'coin'></div>
+		<div class = 'brick'></div>
+	</div>
+	<div class ='row'> 
+		<div class = 'brick'></div>
+		<div class = 'brick'></div>	
+		<div class = 'brick'></div>
+		<div class = 'brick'></div>
+		<div class = 'brick'></div>
+		<div class = 'brick'></div>
+		<div class = 'brick'></div>
+		<div class = 'brick'></div>
+		<div class = 'brick'></div>
+		<div class = 'brick'></div>
+	</div>
+-->
