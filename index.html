@@ -1,42 +1,49 @@
 <!DOCTYPE html>
 <html>
-	<head>
-		<title>Pacman Demo</title>
-		<style type="text/css">
-			body{
-				background-color: black;
-			}
+
+<head>
+	<title>Pacman Demo</title>
+	<style type="text/css">
+		body {
+			background-color: black;
+		}
+
 		/* for all div elements withing the div of class "row" ... */
-			div.row div{
-				width: 20px;
-				height: 20px;
-				display: inline-block;
-			}
-			div.brick{
-				background-color: blue;
-			}
-			div.coin{
-				background: url('./images/coin.gif');
-				background-repeat: no-repeat;
-				background-position: center;
-				background-size: 100%;
-			}
-			div#pacman{
-				background: url('./images/pacman.gif');
-				background-repeat: no-repeat;
-				background-size: cover;	
-				position: absolute;
-				width: 20px;
-				height: 20px;
-				/*-webkit-transform: scaleX(-1);*/
-				transform:scaleX(-1);
-			}
-			div.empty{
-			}
-		</style>
-	</head>
-	<body>
-		<!--		 
+
+		div.row div {
+			width: 20px;
+			height: 20px;
+			display: inline-block;
+		}
+
+		div.brick {
+			background-color: blue;
+		}
+
+		div.coin {
+			background: url('./images/coin.gif');
+			background-repeat: no-repeat;
+			background-position: center;
+			background-size: 100%;
+		}
+
+		div#pacman {
+			background: url('./images/pacman.gif');
+			background-repeat: no-repeat;
+			background-size: cover;
+			position: absolute;
+			width: 20px;
+			height: 20px;
+			/*-webkit-transform: scaleX(-1);*/
+			transform: scaleX(-1);
+		}
+
+		div.empty {}
+	</style>
+</head>
+
+<body>
+	<!--		 
 			 Game Requirements:
 
 			(Can use/import jQuery or another way...) 
@@ -45,82 +52,82 @@
 			1) js display the world (brick/empty/coin etc)
 			2) pacman to move up and down (and sideways)?
 		-->
-		<div id='pacman' style='top: 31px; left: 34px'></div>
-		<div id='world'></div>
-		
-		<script>
-			// x is row view
-			// y is column view
-			var world = [
-				[ 2, 2, 2, 2, 2, 2, 2, 2, 2, 2],
-				[ 2, 0, 1, 2, 1, 1, 2, 2, 1, 2],
-				[ 2, 0, 0, 1, 1, 2, 0, 2, 1, 2],
-				[ 2, 1, 0, 2, 0, 0, 1, 0, 0, 2],
-				[ 2, 1, 2, 2, 2, 0, 1, 0, 2, 2],
-				[ 2, 1, 1, 2, 0, 1, 0, 2, 1, 2],
-				[ 2, 2, 1, 0, 1, 1, 1, 2, 0, 2],
-				[ 2, 1, 0, 2, 2, 2, 0, 0, 0, 2],
-				[ 2, 1, 1, 2, 2, 2, 1, 2, 1, 2],
-				[ 2, 1, 1, 0, 0, 0, 1, 2, 1, 2],
-				[ 2, 2, 2, 2, 2, 2, 2, 2, 2, 2],
-			] // world[x[y]] ~ world[row[column]]
-			
-			function pacmanWorld() 
-			{
-				var output ='';
-				for (var x=0; x<world.length; x++){
-					output += "<div class = 'row'>\n\t";
-					console.log(world[x]);
-					for (var y=0; y<world[x].length; y++){
-						console.log(world[x][y]);
-					
-						switch (world[x][y]) {
-							case 2:
-								console.log(world[x][y]);
-								output +="<div class='brick'></div>\n\t";
-								break;
-							case 1:
-								output +='<div class="coin"></div>\n\t';
-								break;
-							case 0:
-								output +='<div class="empty"></div>\n\t';
-								break;
-						}
+	<div id='pacman' style='top: 31px; left: 34px'></div>
+	<div id='world'></div>
+
+	<script>
+		// x is row view
+		// y is column view
+		var world = [
+			[2, 2, 2, 2, 2, 2, 2, 2, 2, 2],
+			[2, 0, 1, 2, 1, 1, 2, 2, 1, 2],
+			[2, 0, 0, 1, 1, 2, 0, 2, 1, 2],
+			[2, 1, 0, 2, 0, 0, 1, 0, 0, 2],
+			[2, 1, 2, 2, 2, 0, 1, 0, 2, 2],
+			[2, 1, 1, 2, 0, 1, 0, 2, 1, 2],
+			[2, 2, 1, 0, 1, 1, 1, 2, 0, 2],
+			[2, 1, 0, 2, 2, 2, 0, 0, 0, 2],
+			[2, 1, 1, 2, 2, 2, 1, 2, 1, 2],
+			[2, 1, 1, 0, 0, 0, 1, 2, 1, 2],
+			[2, 2, 2, 2, 2, 2, 2, 2, 2, 2],
+		] // world[x[y]] ~ world[row[column]]
+
+		function pacmanWorld() {
+			var output = '';
+			for (var x = 0; x < world.length; x++) {
+				output += "<div class = 'row'>\n\t";
+				console.log(world[x]);
+				for (var y = 0; y < world[x].length; y++) {
+					console.log(world[x][y]);
+
+					switch (world[x][y]) {
+						case 2:
+							console.log(world[x][y]);
+							output += "<div class='brick'></div>\n\t";
+							break;
+						case 1:
+							output += '<div class="coin"></div>\n\t';
+							break;
+						case 0:
+							output += '<div class="empty"></div>\n\t';
+							break;
 					}
-					output += "</div>\n\t";
 				}
-				console.log(output);
-				document.getElementById("world").innerHTML=output;
+				output += "</div>\n\t";
 			}
+			console.log(output);
+			document.getElementById("world").innerHTML = output;
+		}
 
-			pacmanWorld();
+		pacmanWorld();
 
-			function displayPacman(){
+		function displayPacman() {
+		}
+
+		document.onkeydown = function (e) {
+			//alert("User pressed key down");
+			console.log(e.key, e.keyCode);
+			//ArrowDown
+			if (e.key == 40) {
+				document.getElementById("pacman").style.top += 24;
 			}
+			//ArrowUp
+			if (e.key == 38) {
+				document.getElementById("pacman").style.top -= 24;
+			}
+			//ArrowLeft
+			if (e.key == 37) {
+				document.getElementById("pacman").style.left -= 24;
+			}
+			//ArrowRight
+			if (e.key == 39) {
+				document.getElementById("pacman").style.left += 24;
+			}
+		};
 
-			document.onkeydown =function(e){
-				//alert("User pressed key down");
-				console.log(e.key, e.keyCode);
-				//ArrowDown
-				if(e.key==40){
-					document.getElementById("pacman").style.top+=24;
-				}
-				//ArrowUp
-				if(e.key==38){
-					document.getElementById("pacman").style.top-=24;
-				}
-				//ArrowLeft
-				if(e.key==37){
-					document.getElementById("pacman").style.left-=24;
-				}
-				//ArrowRight
-				if(e.key==39){
-					document.getElementById("pacman").style.left+=24;
-				}
-			};
+	</script>
+</body>
 
-		</script>
-	</body>
 </html>
 
 <!-- ++++++++++++++++++++++++++ -->
